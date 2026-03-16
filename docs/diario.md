@@ -60,24 +60,24 @@
 - Arrancar Semana 2: limpieza de datos
 - Normalizar nombres de columnas, convertir dtypes, detectar nulos, crear decisions_log.md
 
-## 16/03/2026 — Semana 2, Día 1
+## 16/03/2026 — Semana 2, Día 1 (continuación)
 
 **Qué hicimos:**
-- Creamos 02_limpieza_datos.ipynb como notebook dedicado a limpieza
-- Eliminamos las celdas de diagnóstico que habíamos agregado en 01_carga_datos.ipynb
-- Normalizamos columnas de los 8 datasets con tres estrategias distintas:
-  - df_mat_2024: rename puntual de "Departamento" y "Localizacion" → snake_case
-  - df_edad (2022/23/24): función limpiar_columnas() en bloque para eliminar tildes y ñ
-  - abandono_reciente: rename explícito de 17 columnas con nomenclatura prim_/sec_
-  - abandono_historico: rename explícito de 17 columnas + drop de filas 0 y 1 (eran sub-encabezados del Excel, no datos) + reset_index
+- Configuramos Git por primera vez (user.name y user.email)
+- Creamos el repositorio público en GitHub: proyecto-unicef-argentina
+- Conectamos la carpeta local con GitHub y subimos el proyecto completo
+- Armamos README.md profesional con descripción bilingüe, tabla de estado semanal,
+  fuentes de datos, stack tecnológico y estructura de carpetas
 
 **Problemas / decisiones:**
-- FileNotFoundError al intentar cargar CSVs → causa: nombres de archivo inventados, no coincidían con los reales; solución: os.listdir() para ver los nombres exactos
-- Los archivos están en data/raw/, no en la raíz del proyecto
-- abandono_historico tenía encabezado multinivel de 3 niveles → pandas lo leyó como filas; se resolvió con drop(index=[0,1])
-- Nomenclatura elegida para abandono: prim_ para primaria, sec_ para secundaria, sec_cb_ y sec_co_ para ciclo básico y orientado
+- FileNotFoundError en push → causa: nombre de rama local era "master" en vez de "main"; solución: git branch -m master main
+- Error 403 → causa: credenciales de otra cuenta de GitHub guardadas en Windows; solución: limpiar desde Administrador de credenciales
+- Push rechazado → causa: GitHub tenía un commit con la licencia MIT que el local no tenía; solución: git pull --allow-unrelated-histories
+- Editor vim abierto para confirmar merge → solución: :wq para guardar y salir
+- Título "Licenciado en Ciencias de Datos" corregido a "Diplomado en Ciencias de Datos — UTN"
+- Link de LinkedIn corregido con URL real del perfil
 
 **Próxima sesión:**
-- Crear decisions_log.md documentando las decisiones de limpieza de hoy
+- Crear decisions_log.md documentando las decisiones de limpieza
 - Convertir columnas de abandono de object a numérico
 - Detectar y documentar valores nulos
