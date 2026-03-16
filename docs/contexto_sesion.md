@@ -13,6 +13,7 @@ CONTEXTO DEL PROYECTO — LEER ANTES DE RESPONDER
 - Fuentes: UNICEF Argentina, INDEC-EPH, Ministerio de Educación, SENAF
 - Stack: Python, pandas, scikit-learn, matplotlib/seaborn, Looker Studio
 - Drive: C:\Users\fedeo\Desktop\PROYECTO UNICEF\
+- Repositorio GitHub: https://github.com/federicooscargiglio/proyecto-unicef-argentina
 
 === DÓNDE ESTAMOS ===
 - Semana: 2 de 8
@@ -39,6 +40,15 @@ CONTEXTO DEL PROYECTO — LEER ANTES DE RESPONDER
 4. Normalización — Matrícula por edad: función limpiar_columnas() elimina tildes y ñ (markdown + código)
 5. Normalización — Abandono reciente: rename explícito de 17 columnas con prefijos prim_/sec_ (markdown + código)
 6. Normalización — Abandono histórico: rename explícito + drop filas 0-1 + reset_index (markdown + código)
+
+=== CIERRE DE SESIÓN — HACER SIEMPRE ===
+Al final de cada sesión de trabajo, antes de cerrar VS Code:
+1. Guardar todos los archivos (Ctrl+S)
+2. Actualizar diario.md y contexto_sesion.md
+3. Subir cambios a GitHub:
+   git add .
+   git commit -m "descripción breve de lo que hiciste"
+   git push
 
 === PRÓXIMO PASO ===
 - Crear decisions_log.md documentando las decisiones de limpieza
