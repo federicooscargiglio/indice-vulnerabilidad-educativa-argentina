@@ -107,3 +107,21 @@ documenta esta limitación explícitamente.
 - Decisión: replicar la estructura visual de Visualización II para permitir comparación directa entre períodos.
 - Criterio: misma paleta, misma lógica de colores por promedio nacional, mismo tipo de gráfico.
 - Hallazgo: San Juan (1°) y Formosa (2°) lideraban en 2003–2016. Chaco escala del puesto 9 al 1 en 2012–2024. San Juan cae del puesto 1 al 12. La Rioja es consistentemente la provincia con menor abandono en ambos períodos.
+
+
+## Visualización V — matrícula secundaria vs. abandono por provincia
+
+## DEC-013
+**Fecha:** 2025-03-27
+**Decisión:** Visualización V — matrícula secundaria vs. abandono por provincia
+**Contexto:** Cierre de EDA I. Se calculó matrícula secundaria total por provincia
+sumando columnas _7 a _12 del dataset matricula_total_2024.csv. Las columnas _1–_6
+corresponden a primaria y _7–_12 a secundaria (confirmado por totales coherentes
+con cifras nacionales ~4.25M alumnos secundarios).
+**Alternativas descartadas:** Columnas _sec1–_sec12 descartadas — representan
+secciones/divisiones, no alumnos.
+**Hallazgo:** No existe relación lineal entre tamaño del sistema educativo provincial
+y tasa de abandono. El abandono responde a factores estructurales propios de cada
+provincia. Buenos Aires (1.6M alumnos, 6.7% abandono) y Chaco (122k alumnos,
+14.3% abandono) ilustran el punto.
+**Impacto:** Output guardado como 05_matricula_vs_abandono.png.
