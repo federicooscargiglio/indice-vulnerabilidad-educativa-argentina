@@ -15,3 +15,18 @@
 - Archivos de tasas de abandono histórico movidos a raw/abandono_historico/
 - Tema del proyecto actualizado de "bullying/apuestas" a "trayectorias educativas"
 - Estrategia definida: modelo ML con datos 2024, tendencia visual con 2022-2024
+
+---
+
+## Sesión 2026-04-09 (continuación)
+
+**Estado:** Semana 4 — Reestructuración completa del proyecto  
+**Último hito:** 01_carga_datos.ipynb actualizado y funcionando con las 3 bases nuevas  
+**Próximo paso:** Reestructurar 02_limpieza_datos.ipynb y 03_eda.ipynb
+
+**Notas:**
+- Base 3 (Trayectoria) confirmada: variable target identificada = `ssp_*` (salidos sin pase)
+- 1.209 escuelas con datos de abandono por grado (ssp_1 a ssp_12)
+- Fórmula del target definida: tasa_abandono = ssp_total / inicial_total × 100
+- Todas las rutas del notebook corregidas después de reorganización de raw/
+- Notebook corre limpio de principio a fin sin errores
