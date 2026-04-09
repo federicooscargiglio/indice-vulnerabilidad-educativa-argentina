@@ -1,6 +1,6 @@
-# Decisions Log — Proyecto UNICEF Argentina
+# Decisions Log — Trayectorias Educativas en Argentina
 
-Registro de decisiones analíticas tomadas durante la limpieza y preparación de datos.
+Registro de decisiones analíticas tomadas durante el desarrollo del proyecto.
 Cada entrada documenta qué se encontró, qué se decidió y el criterio utilizado.
 
 ---
@@ -125,3 +125,28 @@ y tasa de abandono. El abandono responde a factores estructurales propios de cad
 provincia. Buenos Aires (1.6M alumnos, 6.7% abandono) y Chaco (122k alumnos,
 14.3% abandono) ilustran el punto.
 **Impacto:** Output guardado como 05_matricula_vs_abandono.png.
+
+
+---
+
+
+---
+
+## Reestructuración del proyecto
+
+**DEC-014 — Pivoteo de tema y redefinición del alcance**
+- Fecha: 2026-04-09
+- Decisión: cambio de tema de "Bullying escolar y apuestas online" a 
+  "Trayectorias Educativas en Argentina con foco en riesgo de abandono escolar".
+- Criterio: los datos disponibles públicamente (Relevamiento Anual, tasas de abandono)
+  son sólidos y accionables. No existen microdatos públicos de calidad sobre bullying
+  en Argentina. El nuevo enfoque permite construir un producto concreto — un índice de
+  riesgo por escuela — y apuntar a organizaciones reales como Argentinos por la 
+  Educación y UNICEF Argentina.
+- Impacto: repo renombrado a trayectorias-educativas-argentina. Las decisiones 
+  DEC-001 a DEC-013 se mantienen — el trabajo de limpieza sobre datos de abandono
+  y matrícula es válido en el nuevo contexto.
+- Fuente principal redefinida: Relevamiento Anual 2024 — Ministerio de Educación
+  (Bases 2, 3 y 5 por establecimiento educativo).
+- Pregunta principal: ¿Qué variables predicen tasas críticas de abandono por escuela
+  y es posible construir un índice de riesgo operacionalmente útil?

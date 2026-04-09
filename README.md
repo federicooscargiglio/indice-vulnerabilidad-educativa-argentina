@@ -1,14 +1,39 @@
-# Proyecto UNICEF Argentina — Bullying Escolar y Apuestas Online
+# Trayectorias Educativas en Argentina — Análisis de Datos y Machine Learning
 
-> **English summary:** Data analysis and machine learning project on school bullying and online gambling among Argentine adolescents. Built with Python, pandas, scikit-learn and Looker Studio. Data sources: UNICEF Argentina, Ministry of Education, INDEC. Currently in progress — Week 3 of 8 completed.
+> **English summary:** Data analysis and machine learning project on school dropout risk 
+> in Argentina. Built with Python, pandas, scikit-learn and Looker Studio. Data source: 
+> Ministerio de Educación — Relevamiento Anual 2024. Goal: build a school-level dropout 
+> risk index to support NGO intervention prioritization.
 
 ---
 
 ## ¿De qué trata este proyecto?
 
-Este proyecto analiza dos problemáticas que afectan a los adolescentes argentinos: el **bullying escolar** y las **apuestas online**. A través de datos públicos de UNICEF Argentina, el Ministerio de Educación e INDEC, se construye un análisis completo que va desde la exploración de los datos hasta un modelo de Machine Learning para identificar perfiles de riesgo.
+Este proyecto analiza las trayectorias educativas en Argentina (nivel primario y secundario)
+con foco en la identificación de escuelas en riesgo de abandono escolar.
 
-El objetivo final es presentar los hallazgos como propuesta de colaboración a **UNICEF Argentina**.
+A través de datos públicos del Ministerio de Educación (Relevamiento Anual 2024), se 
+construye un índice de riesgo de abandono por establecimiento educativo. El objetivo es 
+que ese índice sea una herramienta concreta para que organizaciones como 
+**Argentinos por la Educación** y **UNICEF Argentina** puedan priorizar intervenciones 
+territoriales.
+
+---
+
+## Preguntas de investigación
+
+**Principal**
+> ¿Qué variables institucionales y de trayectoria escolar predicen que un establecimiento 
+> presente tasas críticas de abandono, y es posible construir un índice de riesgo por 
+> escuela operacionalmente útil?
+
+**Secundarias**
+1. ¿Cómo se distribuye el abandono, la repitencia y la sobreedad por provincia y nivel 
+   educativo?
+2. ¿En qué medida el nivel socioeconómico del hogar explica diferencias en rendimiento 
+   que derivan en abandono?
+3. ¿Es posible construir un índice compuesto de riesgo por escuela interpretable para 
+   tomadores de decisión no técnicos?
 
 ---
 
@@ -16,35 +41,36 @@ El objetivo final es presentar los hallazgos como propuesta de colaboración a *
 
 | Semana | Fase | Estado |
 |--------|------|--------|
-| Semana 1 | Fundamentos y entorno | ✅ Completada |
-| Semana 2 | Limpieza y auditoría de datos | ✅ Completada |
-| Semana 3 | Análisis exploratorio I | ✅ Completada |
-| Semana 4 | Análisis exploratorio II | ⏳ Pendiente |
-| Semana 5 | Feature Engineering | ⏳ Pendiente |
-| Semana 6 | Machine Learning I | ⏳ Pendiente |
-| Semana 7 | Machine Learning II | ⏳ Pendiente |
-| Semana 8 | Dashboard y propuesta final | ⏳ Pendiente |
+| Semana 1–2 | Setup, recolección y limpieza de datos | ✅ Completada |
+| Semana 3 | EDA Parte I — abandono y matrícula | ✅ Completada |
+| Semana 4 | EDA Parte II — repitencia, sobreedad, características | 🔄 En curso |
+| Semana 5 | Feature engineering y preparación para ML | ⏳ Pendiente |
+| Semana 6 | Modelado — clasificación y construcción del índice | ⏳ Pendiente |
+| Semana 7 | Validación, interpretación y visualización | ⏳ Pendiente |
+| Semana 8 | Informe final y presentación | ⏳ Pendiente |
 
 ---
 
 ## Hallazgos clave — EDA I (Semana 3)
 
-- **sec_12 tiene ~20% de abandono**: el pico más alto de toda la trayectoria escolar
-- **Chaco (14.3%), Salta (12.1%) y Misiones (12.0%)** lideran el abandono secundario provincial
-- **Promedio nacional**: 8.0% (período reciente) vs 9.3% (período histórico) — tendencia positiva
+- **Secundaria 12° año (~20% de abandono):** pico más alto de toda la trayectoria escolar
+- **Chaco (14.3%), Salta (12.1%) y Misiones (12.0%)** lideran el abandono provincial
+- **Promedio nacional:** 8.0% (período reciente) vs 9.3% (histórico) — tendencia positiva
 - **Sin relación lineal** entre tamaño del sistema educativo y tasa de abandono provincial
 
 ---
 
 ## Fuentes de datos
 
-| Fuente | Descripción |
-|--------|-------------|
-| [UNICEF Argentina — Encuesta Rápida 2020–2024](https://www.unicef.org/argentina/informes) | Bullying, bienestar y conductas de riesgo en adolescentes |
-| [Ministerio de Educación](https://www.argentina.gob.ar/educacion/planeamiento/siteal) | Matrícula, deserción y repitencia por provincia |
-| [INDEC — EPH](https://www.indec.gob.ar) | Nivel socioeconómico y condiciones habitacionales |
-| [SITAN UNICEF Argentina 2024](https://www.unicef.org/argentina/informes/sitan) | Situación de la infancia y adolescencia |
-| [SENAF](https://www.argentina.gob.ar/senaf) | Protección de niñez y vulnerabilidad |
+| Dataset | Fuente | Cobertura |
+|---------|--------|-----------|
+| Base por Escuela — Relevamiento Anual 2024 | [datos.gob.ar](https://datos.gob.ar/dataset/educacion-base-datos-por-escuela-2024) | Matrícula, repitencia, sobreedad, trayectoria, características del establecimiento |
+| Tasas de abandono interanual 2003–2024 | [datos.gob.ar](https://datos.gob.ar) | Serie histórica por provincia y nivel |
+| Matrícula agregada 2022–2024 | [datos.gob.ar](https://datos.gob.ar) | Tendencia reciente por provincia |
+
+> **Nota metodológica:** Los años 2020 y 2021 quedan fuera del modelo por la ruptura 
+> estructural que generó la pandemia COVID-19 en las trayectorias escolares. Se mencionan 
+> en el análisis descriptivo como contexto histórico.
 
 ---
 
@@ -61,38 +87,39 @@ El objetivo final es presentar los hallazgos como propuesta de colaboración a *
 
 ## Estructura del proyecto
 
-```
-PROYECTO UNICEF/
+trayectorias-educativas-argentina/
 │
 ├── data/
-│   ├── raw/          # Datos originales sin modificar
-│   ├── clean/        # Datos procesados y limpios (8 datasets)
-│   └── ml/           # Datasets preparados para ML
+│   ├── raw/
+│   │   ├── 2022_relevamiento/     # Matrícula 2022
+│   │   ├── 2023_relevamiento/     # Matrícula 2023
+│   │   ├── 2024_relevamiento/     # Base 2 (matrícula), Base 3 (trayectoria),
+│   │   │                          # Base 5 (características) — fuente principal
+│   │   └── abandono_historico/    # Series 2003–2024
+│   ├── clean/                     # Datos procesados listos para análisis
+│   └── ml/                        # Datasets preparados para modelos
 │
 ├── notebooks/
-│   ├── 00_test_entorno.ipynb        # Verificación de entorno
-│   ├── 01_carga_datos.ipynb         # Carga de los 8 datasets
-│   ├── 02_limpieza_datos.ipynb      # Limpieza y auditoría
-│   └── 03_eda.ipynb                 # EDA I — 5 visualizaciones
+│   ├── 00_test_entorno.ipynb      # Verificación de entorno
+│   ├── 01_carga_datos.ipynb       # Carga de datasets
+│   ├── 02_limpieza_datos.ipynb    # Limpieza y auditoría
+│   └── 03_eda.ipynb               # EDA I — abandono y matrícula
 │
-├── outputs/          # Visualizaciones generadas
-│   ├── 01_abandono_por_grado.png
-│   ├── 02_abandono_por_provincia.png
-│   ├── 03_abandono_por_periodo.png
-│   ├── 04_abandono_historico_por_provincia.png
-│   └── 05_matricula_vs_abandono.png
-│
-├── decisions_log.md  # Registro de decisiones técnicas (DEC-001 a DEC-013)
+├── outputs/                       # Visualizaciones generadas
+├── DIARIO.md                      # Bitácora de sesiones de trabajo
+├── decisions_log.md               # Registro de decisiones técnicas
 └── README.md
-```
+
+---
 
 ---
 
 ## Autor
 
-**Federico Oscar Giglio**
-Diplomado en Ciencias de Datos — UTN
-[LinkedIn](https://www.linkedin.com/in/federico-claudio-sait-oscar-giglio/) · [GitHub](https://github.com/federicooscargiglio)
+**Federico Oscar Giglio**  
+Diplomado en Ciencias de Datos — UTN  
+[LinkedIn](https://www.linkedin.com/in/federico-claudio-sait-oscar-giglio/) · 
+[GitHub](https://github.com/federicooscargiglio)
 
 ---
 
