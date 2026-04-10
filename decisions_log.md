@@ -148,5 +148,34 @@ provincia. Buenos Aires (1.6M alumnos, 6.7% abandono) y Chaco (122k alumnos,
   y matrícula es válido en el nuevo contexto.
 - Fuente principal redefinida: Relevamiento Anual 2024 — Ministerio de Educación
   (Bases 2, 3 y 5 por establecimiento educativo).
-- Pregunta principal: ¿Qué variables predicen tasas críticas de abandono por escuela
+- Pregunta principal: ¿Qué variables predicen tasas críticas de abandono por segmento geografico
   y es posible construir un índice de riesgo operacionalmente útil?
+
+
+## DEC-015 — Unidad de análisis: segmento en lugar de establecimiento
+**Fecha:** 10/04/2026
+**Contexto:** Las bases del Relevamiento Anual 2024 descargadas son versiones agregadas
+(sufijo `agregada(in).csv`). No existe CUEANEXO ni identificador de establecimiento individual.
+La combinación provincia × departamento × sector × ámbito es única en las tres bases
+y opera como clave de identificación.
+**Decisión:** La unidad de análisis del modelo pasa de establecimiento a segmento educativo.
+**Impacto:** Pregunta de investigación, README y foco del proyecto actualizados.
+El índice de riesgo se construye por segmento, no por escuela.
+**Alternativa descartada:** Buscar bases desagregadas por escuela en el sitio del Ministerio.
+Se descartó porque no existen archivos con esa granularidad disponibles públicamente.
+
+## DEC-016 — Inclusión de grados 1314 y 20 en el cálculo de tasa_abandono
+**Fecha:** 10/04/2026
+**Contexto:** Base 3 incluye columnas ssp_1314 y ssp_20 además de ssp_1 a ssp_12.
+**Decisión:** Se incluyen en el cálculo de ssp_total e inicial_total.
+**Justificación:** El Ministerio los reporta con el mismo prefijo que los grados estándar,
+lo que indica que pertenecen al flujo de trayectoria del segmento. Excluirlos sin
+justificación metodológica sería arbitrario.
+
+## DEC-017 — Conversión de limpiar_columnas() a método NFKD
+**Fecha:** 10/04/2026
+**Contexto:** La versión anterior reemplazaba caracteres mojibake manualmente
+(Ã¡ → a, Ã© → e, etc.). Ese método es frágil y dependiente del encoding del archivo.
+**Decisión:** Se reemplaza por normalize("NFKD") + encode("ascii", errors="ignore"),
+que descompone cualquier carácter acentuado correctamente sin depender del encoding fuente.
+**Impacto:** limpiar_columnas() en 02_limpieza_datos.ipynb actualizada.
