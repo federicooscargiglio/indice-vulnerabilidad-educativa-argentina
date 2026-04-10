@@ -2,18 +2,18 @@
 
 > **English summary:** Data analysis and machine learning project on school dropout risk 
 > in Argentina. Built with Python, pandas, scikit-learn and Looker Studio. Data source: 
-> Ministerio de Educación — Relevamiento Anual 2024. Goal: build a school-level dropout 
-> risk index to support NGO intervention prioritization.
+> Ministerio de Educación — Relevamiento Anual 2024. Goal: build a segment-level dropout risk index (province × department × sector × setting).
+
 
 ---
 
 ## ¿De qué trata este proyecto?
 
 Este proyecto analiza las trayectorias educativas en Argentina (nivel primario y secundario)
-con foco en la identificación de escuelas en riesgo de abandono escolar.
+con foco en la identificación de segmentos educativos en riesgo de abandono escolar.
 
 A través de datos públicos del Ministerio de Educación (Relevamiento Anual 2024), se 
-construye un índice de riesgo de abandono por establecimiento educativo. El objetivo es 
+construye un índice de riesgo de abandono por segmento educativo (provincia × departamento × sector × ámbito). El objetivo es 
 que ese índice sea una herramienta concreta para que organizaciones como 
 **Argentinos por la Educación** y **UNICEF Argentina** puedan priorizar intervenciones 
 territoriales.
@@ -23,17 +23,16 @@ territoriales.
 ## Preguntas de investigación
 
 **Principal**
-> ¿Qué variables institucionales y de trayectoria escolar predicen que un establecimiento 
-> presente tasas críticas de abandono, y es posible construir un índice de riesgo por 
-> escuela operacionalmente útil?
+> ¿Qué variables territoriales e institucionales predicen que un segmento educativo
+> (provincia × departamento × sector × ámbito) presente tasas críticas de abandono,
+> y es posible construir un índice de riesgo operacionalmente útil para priorizar intervenciones?
 
 **Secundarias**
 1. ¿Cómo se distribuye el abandono, la repitencia y la sobreedad por provincia y nivel 
    educativo?
 2. ¿En qué medida el nivel socioeconómico del hogar explica diferencias en rendimiento 
    que derivan en abandono?
-3. ¿Es posible construir un índice compuesto de riesgo por escuela interpretable para 
-   tomadores de decisión no técnicos?
+3. ¿Es posible construir un índice compuesto de riesgo por segmento educativo interpretable para tomadores de decisión no técnicos?
 
 ---
 
