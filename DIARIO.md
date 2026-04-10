@@ -30,3 +30,19 @@
 - Fórmula del target definida: tasa_abandono = ssp_total / inicial_total × 100
 - Todas las rutas del notebook corregidas después de reorganización de raw/
 - Notebook corre limpio de principio a fin sin errores
+
+## Sesión 2026-04-10
+
+**Estado:** Semana 4 — Limpieza de datos completada  
+**Último hito:** 02_limpieza_datos.ipynb reestructurado y corriendo limpio (19 celdas)  
+**Próximo paso:** Reestructurar 03_eda.ipynb y agregar EDA sobre bases RA 2024
+
+**Notas:**
+- Rutas corregidas de absolutas a relativas — notebook ahora es reproducible en cualquier máquina
+- Función limpiar_columnas() mejorada con normalize("NFKD") — reemplaza método frágil de mojibake manual
+- Bases RA 2024 (Base 2, 3 y 5) cargadas y limpias — cero nulos en las tres
+- Unidad de análisis confirmada: segmento (provincia × departamento × sector × ámbito), no por escuela
+- Pregunta de investigación actualizada en README y contexto_sesion.md
+- tasa_abandono calculada sobre Base 3 — rango 0% a 43.33%, media 0.86%, 1 NaN estructural
+- 11 datasets exportados a data/clean/ — 8 existentes + base2, base3, base5
+- Decisión registrada: datos del Ministerio no tienen granularidad por escuela — se trabaja con agregados
