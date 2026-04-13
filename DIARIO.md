@@ -1,4 +1,4 @@
-# Diario de trabajo — Trayectorias Educativas en Argentina
+# Diario de trabajo — Índice de Vulnerabilidad Educativa — Argentina
 
 ---
 
@@ -46,3 +46,13 @@
 - tasa_abandono calculada sobre Base 3 — rango 0% a 43.33%, media 0.86%, 1 NaN estructural
 - 11 datasets exportados a data/clean/ — 8 existentes + base2, base3, base5
 - Decisión registrada: datos del Ministerio no tienen granularidad por escuela — se trabaja con agregados
+
+## Sesión 2026-04-13
+**Estado:** Semana 4 — EDA en curso
+**Último hito:** 03_eda.ipynb reestructurado — ruta relativa corregida, base3 y base5 agregadas a la carga
+**Próximo paso:** Agregar Parte II del EDA — análisis de tasa_abandono por segmento RA 2024
+**Notas:**
+- Proyecto renombrado a "Índice de Vulnerabilidad Educativa — Argentina"
+- Carpeta local y repositorio GitHub renombrados
+- README actualizado con nuevo nombre y descripción
+- contexto_sesion.md pendiente de actualizar (fuera del repo)
