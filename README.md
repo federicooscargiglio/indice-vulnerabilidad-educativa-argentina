@@ -1,22 +1,24 @@
-# Trayectorias Educativas en Argentina — Análisis de Datos y Machine Learning
+# Índice de Vulnerabilidad Educativa — Argentina
 
-> **English summary:** Data analysis and machine learning project on school dropout risk 
-> in Argentina. Built with Python, pandas, scikit-learn and Looker Studio. Data source: 
-> Ministerio de Educación — Relevamiento Anual 2024. Goal: build a segment-level dropout risk index (province × department × sector × setting).
-
+> **English summary:** Data analysis and machine learning project on school dropout risk
+> in Argentina. Built with Python, pandas, scikit-learn and Looker Studio. Data source:
+> Ministerio de Educación — Relevamiento Anual 2024. Goal: build a segment-level
+> vulnerability index (province × department × sector × setting) to prioritize
+> educational interventions.
 
 ---
 
 ## ¿De qué trata este proyecto?
 
-Este proyecto analiza las trayectorias educativas en Argentina (nivel primario y secundario)
-con foco en la identificación de segmentos educativos en riesgo de abandono escolar.
+Este proyecto construye un **Índice de Vulnerabilidad Educativa** por segmento educativo
+(provincia × departamento × sector × ámbito) en Argentina, con foco en el riesgo de
+abandono escolar en los niveles primario y secundario.
 
-A través de datos públicos del Ministerio de Educación (Relevamiento Anual 2024), se 
-construye un índice de riesgo de abandono por segmento educativo (provincia × departamento × sector × ámbito). El objetivo es 
-que ese índice sea una herramienta concreta para que organizaciones como 
-**Argentinos por la Educación** y **UNICEF Argentina** puedan priorizar intervenciones 
-territoriales.
+A través de datos públicos del Ministerio de Educación (Relevamiento Anual 2024), se
+identifican los segmentos con mayor riesgo de abandono y se construye un índice
+interpretable para tomadores de decisión no técnicos. El objetivo es que sea una
+herramienta concreta para que organizaciones como **Argentinos por la Educación** y
+**UNICEF Argentina** puedan priorizar intervenciones territoriales.
 
 ---
 
@@ -25,14 +27,16 @@ territoriales.
 **Principal**
 > ¿Qué variables territoriales e institucionales predicen que un segmento educativo
 > (provincia × departamento × sector × ámbito) presente tasas críticas de abandono,
-> y es posible construir un índice de riesgo operacionalmente útil para priorizar intervenciones?
+> y es posible construir un índice de vulnerabilidad operacionalmente útil para
+> priorizar intervenciones?
 
 **Secundarias**
-1. ¿Cómo se distribuye el abandono, la repitencia y la sobreedad por provincia y nivel 
+1. ¿Cómo se distribuye el abandono, la repitencia y la sobreedad por provincia y nivel
    educativo?
-2. ¿En qué medida el nivel socioeconómico del hogar explica diferencias en rendimiento 
+2. ¿En qué medida el nivel socioeconómico del hogar explica diferencias en rendimiento
    que derivan en abandono?
-3. ¿Es posible construir un índice compuesto de riesgo por segmento educativo interpretable para tomadores de decisión no técnicos?
+3. ¿Es posible construir un índice compuesto de riesgo por segmento educativo interpretable
+   para tomadores de decisión no técnicos?
 
 ---
 
@@ -41,8 +45,8 @@ territoriales.
 | Semana | Fase | Estado |
 |--------|------|--------|
 | Semana 1–2 | Setup, recolección y limpieza de datos | ✅ Completada |
-| Semana 3 | EDA Parte I — abandono y matrícula | ✅ Completada |
-| Semana 4 | EDA Parte II — repitencia, sobreedad, características | 🔄 En curso |
+| Semana 3 | EDA Parte I — abandono y matrícula provincial | ✅ Completada |
+| Semana 4 | EDA Parte II — análisis por segmento RA 2024 | 🔄 En curso |
 | Semana 5 | Feature engineering y preparación para ML | ⏳ Pendiente |
 | Semana 6 | Modelado — clasificación y construcción del índice | ⏳ Pendiente |
 | Semana 7 | Validación, interpretación y visualización | ⏳ Pendiente |
@@ -67,8 +71,8 @@ territoriales.
 | Tasas de abandono interanual 2003–2024 | [datos.gob.ar](https://datos.gob.ar) | Serie histórica por provincia y nivel |
 | Matrícula agregada 2022–2024 | [datos.gob.ar](https://datos.gob.ar) | Tendencia reciente por provincia |
 
-> **Nota metodológica:** Los años 2020 y 2021 quedan fuera del modelo por la ruptura 
-> estructural que generó la pandemia COVID-19 en las trayectorias escolares. Se mencionan 
+> **Nota metodológica:** Los años 2020 y 2021 quedan fuera del modelo por la ruptura
+> estructural que generó la pandemia COVID-19 en las trayectorias escolares. Se mencionan
 > en el análisis descriptivo como contexto histórico.
 
 ---
@@ -86,7 +90,7 @@ territoriales.
 
 ## Estructura del proyecto
 
-trayectorias-educativas-argentina/
+indice-vulnerabilidad-educativa-argentina/
 │
 ├── data/
 │   ├── raw/
@@ -102,7 +106,7 @@ trayectorias-educativas-argentina/
 │   ├── 00_test_entorno.ipynb      # Verificación de entorno
 │   ├── 01_carga_datos.ipynb       # Carga de datasets
 │   ├── 02_limpieza_datos.ipynb    # Limpieza y auditoría
-│   └── 03_eda.ipynb               # EDA I — abandono y matrícula
+│   └── 03_eda.ipynb               # EDA — abandono provincial y análisis por segmento
 │
 ├── outputs/                       # Visualizaciones generadas
 ├── DIARIO.md                      # Bitácora de sesiones de trabajo
@@ -111,13 +115,11 @@ trayectorias-educativas-argentina/
 
 ---
 
----
-
 ## Autor
 
-**Federico Oscar Giglio**  
-Diplomado en Ciencias de Datos — UTN  
-[LinkedIn](https://www.linkedin.com/in/federico-claudio-sait-oscar-giglio/) · 
+**Federico Oscar Giglio**
+Diplomado en Ciencias de Datos — UTN
+[LinkedIn](https://www.linkedin.com/in/federico-claudio-sait-oscar-giglio/) ·
 [GitHub](https://github.com/federicooscargiglio)
 
 ---
