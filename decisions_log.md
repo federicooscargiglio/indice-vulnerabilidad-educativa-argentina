@@ -1,4 +1,4 @@
-# Decisions Log — Trayectorias Educativas en Argentina
+# Decisions Log — Índice de Vulnerabilidad Educativa — Argentina
 
 Registro de decisiones analíticas tomadas durante el desarrollo del proyecto.
 Cada entrada documenta qué se encontró, qué se decidió y el criterio utilizado.
@@ -179,3 +179,13 @@ justificación metodológica sería arbitrario.
 **Decisión:** Se reemplaza por normalize("NFKD") + encode("ascii", errors="ignore"),
 que descompone cualquier carácter acentuado correctamente sin depender del encoding fuente.
 **Impacto:** limpiar_columnas() en 02_limpieza_datos.ipynb actualizada.
+
+## DEC-018 — Renombrado del proyecto
+**Fecha:** 13/04/2026
+**Decisión:** El proyecto se renombra de "Trayectorias Educativas en Argentina" a
+"Índice de Vulnerabilidad Educativa — Argentina".
+**Criterio:** El nombre anterior describía el proceso de análisis. El nuevo nombre
+describe el producto final — el índice — y comunica mejor el valor concreto del
+proyecto para tomadores de decisión y reclutadores.
+**Impacto:** Carpeta local, repositorio GitHub, README, DIARIO y encabezados de
+notebooks actualizados.
