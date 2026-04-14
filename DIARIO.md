@@ -56,3 +56,39 @@
 - Carpeta local y repositorio GitHub renombrados
 - README actualizado con nuevo nombre y descripción
 - contexto_sesion.md pendiente de actualizar (fuera del repo)
+
+## Sesión 14/04/2026
+
+### Objetivos de la sesión
+- Completar EDA Parte II: análisis de tasa_abandono por segmento sobre base3_trayectoria
+
+### Lo que se hizo
+- Verificación del archivo base3_trayectoria.csv: separador coma (no punto y coma),
+  tasa_abandono ya calculada, 1.209 segmentos, 1 NaN estructural
+- Identificado segmento con máximo abandono: Catamarca — Valle Viejo — Estatal — Rural (43.33%)
+- Análisis 6: distribución de tasa_abandono — distribución sesgada a la derecha,
+  mediana 0.39%, media 0.86%, mayoría de segmentos entre 0% y 2%
+- Análisis 7: abandono por provincia — Misiones, Entre Ríos y Formosa lideran (>1.5%),
+  Buenos Aires y Mendoza en los valores más bajos
+- Análisis 8: abandono por sector — estatales con mediana 5 veces mayor que privados (0.57% vs 0.11%)
+- Análisis 9: abandono por ámbito — rurales con mediana más del doble que urbanos (0.64% vs 0.29%)
+- Análisis 10: cruce sector × ámbito — Privado Rural lidera por tamaño de muestra pequeño (n=39),
+  Privado Urbano es el grupo de menor riesgo (0.09%)
+- Corregido warning de matplotlib: labels → tick_labels en boxplot de sector
+
+### Outputs generados
+- outputs/06_distribucion_tasa_abandono.png
+- outputs/07_abandono_por_provincia_segmento.png
+- outputs/08_abandono_por_sector.png
+- outputs/09_abandono_por_ambito.png
+- outputs/10_abandono_sector_ambito.png
+
+### Hallazgos clave
+- La distribución de tasa_abandono está fuertemente sesgada: el 75% de los segmentos
+  tiene menos de 1.20% de abandono
+- La brecha más pronunciada es entre Privado Urbano y todos los demás grupos
+- Privado Rural (n=39) requiere interpretación cautelosa — perfil atípico
+- El desbalance de clases será una consideración clave al definir el target binario para ML
+
+### Próximo paso
+- Feature engineering: definir features del modelo, target binario y unir bases 2, 3 y 5
