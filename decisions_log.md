@@ -189,3 +189,30 @@ describe el producto final — el índice — y comunica mejor el valor concreto
 proyecto para tomadores de decisión y reclutadores.
 **Impacto:** Carpeta local, repositorio GitHub, README, DIARIO y encabezados de
 notebooks actualizados.
+
+### DEC-019 — Base5 sin variables de accesibilidad física
+- Fecha: 14/04/2026
+- Decisión: Base5 no contiene variables de caminos, transporte o distancia a la escuela. La variable `ambito` (Rural/Urbano) actúa como proxy indirecto.
+- Motivo: El Relevamiento Anual releva características del establecimiento, no del entorno.
+- Mejora futura: Cruzar con datos viales o censales del INDEC.
+
+### DEC-020 — prop_multigrado descartada
+- Fecha: 14/04/2026
+- Decisión: Se descarta la feature `prop_multigrado` del modelo.
+- Motivo: Las columnas `multi_ini`, `multi_pri`, `multi_sec` cuentan secciones multigrado, no escuelas. La proporción secciones/escuelas supera 1.0 en 300 segmentos (máximo 4.44), lo que invalida su uso como proporción.
+
+### DEC-021 — Base 3 excluida como fuente de features (data leakage)
+- Fecha: 14/04/2026
+- Decisión: De Base 3 solo se usa `tasa_abandono` para construir el target binario. Ninguna otra columna de Base 3 entra como feature.
+- Motivo: Las variables de flujo (promovidos, salidos, entrados, inicial) participan directamente en el cálculo de `tasa_abandono`. Usarlas como features generaría data leakage — el modelo tendría precisión artificial alta pero sería inútil para predicción real.
+
+### DEC-022 — Umbral del target binario: percentil 75 (1.2%)
+- Fecha: 14/04/2026
+- Decisión: `abandono_alto = 1` si `tasa_abandono > 1.2%`, `0` si no.
+- Resultado: 301 segmentos alto riesgo (24.9%), 906 bajo riesgo (75.1%).
+- Justificación: Cuartil superior (criterio estándar), suficientes casos positivos para entrenar, volumen gestionable para priorización de intervenciones, consistente con quiebre natural observado en el EDA.
+
+### DEC-023 — NaN en ratio_alumnos_seccion rellenados con mediana
+- Fecha: 14/04/2026
+- Decisión: 3 segmentos con 0 secciones registradas (Buenos Aires-Castelli, Chaco-General Belgrano, Santa Cruz) tenían NaN en `ratio_alumnos_seccion`. Se rellenaron con la mediana (21.77).
+- Motivo: Probable error de registro en la fuente. Los 3 segmentos tienen datos válidos en todas las demás columnas, no se justifica eliminarlos.
