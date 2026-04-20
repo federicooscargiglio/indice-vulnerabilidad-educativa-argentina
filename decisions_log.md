@@ -216,3 +216,19 @@ notebooks actualizados.
 - Fecha: 14/04/2026
 - Decisión: 3 segmentos con 0 secciones registradas (Buenos Aires-Castelli, Chaco-General Belgrano, Santa Cruz) tenían NaN en `ratio_alumnos_seccion`. Se rellenaron con la mediana (21.77).
 - Motivo: Probable error de registro en la fuente. Los 3 segmentos tienen datos válidos en todas las demás columnas, no se justifica eliminarlos.
+### DEC-024 — Umbral de decisión ajustado a 0.4
+- Fecha: 20/04/2026
+- Decisión: Se baja el umbral de clasificación de 0.5 a 0.4.
+- Motivo: Con umbral 0.5 el recall en alto riesgo era 0.37 — el modelo perdía 38 de 60 segmentos críticos. Con 0.4 el recall sube a 0.62 manteniendo precision estable (0.67).
+- Criterio: Para priorización de intervenciones, el error grave es el falso negativo (no detectar un segmento en riesgo). Se acepta más falsos positivos a cambio de mayor detección.
+
+### DEC-025 — Modelo principal: Random Forest con class_weight='balanced'
+- Fecha: 20/04/2026
+- Decisión: Se usa RandomForestClassifier con class_weight='balanced' y random_state=42.
+- Resultados finales (umbral 0.4): Precision 0.67 | Recall 0.62 | F1 0.64 | Accuracy 0.83.
+- Criterio: Maneja bien el desbalance 75/25, produce importancia de features interpretable, no requiere escalar variables. Alternativa descartada: SMOTE — innecesario con este nivel de desbalance.
+
+### DEC-026 — Features más importantes identificadas
+- Fecha: 20/04/2026
+- Hallazgo: tasa_sobreedad (15.9%) y tasa_repitencia (13.2%) son los predictores más importantes. prop_conexion_aulas (11.3%) es el tercer predictor, por encima de variables de infraestructura física. prop_electricidad (1.7%) aporta casi nada — prácticamente universal en 2024.
+- Advertencia documentada: importancia no implica causalidad. Las variables pueden ser síntomas de un problema estructural común.
