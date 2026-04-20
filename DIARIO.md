@@ -92,3 +92,17 @@
 
 ### Próximo paso
 - Feature engineering: definir features del modelo, target binario y unir bases 2, 3 y 5
+## Sesión 20/04/2026
+
+### Qué hicimos
+- Creamos el notebook 05_modelado.ipynb
+- Entrenamos Random Forest con class_weight='balanced' (umbral default 0.5)
+- Detectamos problema de recall bajo en alto riesgo (0.37) y ajustamos umbral a 0.4
+- Resultado final: Precision 0.67 | Recall 0.62 | F1 0.64 | Accuracy 0.83
+- Extrajimos importancia de features — tasa_sobreedad y tasa_repitencia son los predictores principales
+- Actualizamos decisions_log.md (DEC-024 a DEC-026)
+- Generamos outputs: 11_confusion_matrix.png y 12_importancia_features.png
+- Creamos tres PDFs de estudio (Bloques 1, 2 y 3)
+
+### Próximo paso
+- Construir el índice de vulnerabilidad: score continuo 0-100 por segmento y ranking final
